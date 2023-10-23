@@ -1,0 +1,7 @@
+{
+  "name": "powerskema",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

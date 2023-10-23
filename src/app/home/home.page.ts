@@ -15,6 +15,10 @@ export class HomePage {
     formatHourColumn: 'H:MM',
     formatWeekTitle: `MMM 'uge' w`,
   };
+  options = {
+    spaceBetween: 10,
+    threshold: 100,
+  };
   viewTitle = '';
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;

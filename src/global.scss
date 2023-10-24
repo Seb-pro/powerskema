@@ -1,3 +1,22 @@
+/*Calendar Global CSS*/
+calendar {
+  .weekview-allday-table {
+    display: none;
+  }
+  .weekview-normal-event-container {
+    margin-top: 37px;
+  }
+  .dayview-allday-table {
+    display: none;
+  }
+  .dayview-normal-event-container {
+    margin-top: 0px;
+  }
+  .dayview-allday-content-wrapper {
+    height: 0px;
+  }
+}
+
 /*App Global CSS*/
 @import "swiper/css";
 

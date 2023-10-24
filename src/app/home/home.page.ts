@@ -11,15 +11,14 @@ export class HomePage {
   calendar = {
     mode: 'month' as CalendarMode,
     currentDate: new Date(),
-    locale: 'da-DK',
     formatHourColumn: 'H:MM',
     formatWeekTitle: `MMM 'uge' w`,
   };
   options = {
     spaceBetween: 10,
-    threshold: 100,
+    threshold: 50,
   };
-  viewTitle = '';
+  viewTitle: string = '';
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
 
@@ -31,5 +30,8 @@ export class HomePage {
 
   nextMonth() {
     this.myCalendar.slideNext();
+  }
+  onViewTitleChange(title: string) {
+    this.viewTitle = title;
   }
 }

@@ -10,14 +10,14 @@
     <ion-segment-button value="week">UGE</ion-segment-button>
     <ion-segment-button value="month">MÅNED</ion-segment-button>
   </ion-segment>
-  <ion-row>
+  <ion-row class="ion-text-center">
     <ion-col size="3">
       <ion-button fill="clear" (click)="previousMonth()">
         <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-col>
     <ion-col size="6">
-      <h2 class="ion-text-center">{{ viewTitle }}</h2>
+      <h2>{{ viewTitle }}</h2>
     </ion-col>
     <ion-col size="3">
       <ion-button fill="clear" (click)="nextMonth()">
@@ -27,16 +27,13 @@
   </ion-row>
   <calendar
     [calendarMode]="calendar.mode"
-    (onTitleChanged)="viewTitle = $event"
-    [locale]="calendar.locale"
+    (onTitleChanged)="onViewTitleChange($event)"
     [formatHourColumn]="calendar.formatHourColumn"
     [formatWeekTitle]="calendar.formatWeekTitle"
-    allDayLabel=""
+    [sliderOptions]="options"
     [startingDayWeek]="1"
     [startingDayMonth]="1"
     [startHour]="6"
-    [sliderOptions]="options"
-    [lockSwipes]="false"
   >
   </calendar>
 </ion-content>

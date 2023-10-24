@@ -1,20 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>ZtudiePlan</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-segment [(ngModel)]="calendar.mode">
+    <ion-segment-button value="day">DAG</ion-segment-button>
+    <ion-segment-button value="week">UGE</ion-segment-button>
+    <ion-segment-button value="month">MÅNED</ion-segment-button>
+  </ion-segment>
+  <ion-row class="ion-text-center">
+    <ion-col size="3">
+      <ion-button fill="clear" (click)="previousMonth()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <h2>{{ viewTitle }}</h2>
+    </ion-col>
+    <ion-col size="3">
+      <ion-button fill="clear" (click)="nextMonth()">
+        <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <calendar
+    [calendarMode]="calendar.mode"
+    (onTitleChanged)="onViewTitleChange($event)"
+    [formatHourColumn]="calendar.formatHourColumn"
+    [formatWeekTitle]="calendar.formatWeekTitle"
+    [sliderOptions]="options"
+    [startingDayWeek]="1"
+    [startingDayMonth]="1"
+    [startHour]="6"
+  >
+  </calendar>
 </ion-content>

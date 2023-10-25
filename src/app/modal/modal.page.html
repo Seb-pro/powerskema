@@ -1,0 +1,22 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="cancel()">Annullere</ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Ny Begivenhed</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addNewEvent()" [disabled]="!newEvent.title"
+        >tilføj</ion-button
+      >
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  ><div>
+    <ion-input
+      type="text"
+      [(ngModel)]="newEvent.title"
+      placeholder="Title"
+    /></div
+></ion-content>

@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { CalendarMode } from 'ionic7-calendar/calendar.interface';
 import { CalendarComponent } from 'ionic7-calendar';
+import { ModalController } from '@ionic/angular';
+
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +25,16 @@ export class HomePage {
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
 
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {}
+
+  async openList() {
+    const modal = await this.modalCtrl.create({
+      component: ModalPage,
+      breakpoints: [0, 0.5, 0.8],
+      initialBreakpoint: 0.5,
+    });
+    modal.present();
+  }
 
   previousMonth() {
     this.myCalendar.slidePrev();

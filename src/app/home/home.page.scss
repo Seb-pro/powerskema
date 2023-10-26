@@ -5,9 +5,9 @@ ion-content::part(background) {
 
 // Header style
 .home-header {
-  text-align: center;
+  background: var(--ion-color-darkgrey) !important;
   color: var(--ion-color-primary);
-  background: var(--ion-color-darkgrey);
+  text-align: center;
   margin-bottom: 1rem;
 }
 //Segment Day/Week/Month Style

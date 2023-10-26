@@ -18,8 +18,8 @@ ion-content::part(background) {
   background: var(--ion-color-light);
   ion-segment-button {
     --background-checked: var(--ion-color-primary);
+    --color-checked: var(--ion-color-dark);
     --indicator-color: transparent !important;
-    color: var(--ion-color-dark);
   }
 }
 // viewTitle/the current month title Style

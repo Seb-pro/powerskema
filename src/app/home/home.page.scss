@@ -4,12 +4,13 @@ ion-content::part(background) {
 }
 
 // Header style
-.home-header {
-  background: var(--ion-color-darkgrey) !important;
+
+.header {
+  background: var(--ion-color-darkgrey);
   color: var(--ion-color-primary);
   text-align: center;
-  margin-bottom: 1rem;
 }
+
 //Segment Day/Week/Month Style
 .selctor-segment {
   margin: 1rem 1rem 0 1rem;

@@ -19,6 +19,7 @@ ion-content::part(background) {
   ion-segment-button {
     --background-checked: var(--ion-color-primary);
     --indicator-color: transparent !important;
+    color: var(--ion-color-dark);
   }
 }
 // viewTitle/the current month title Style

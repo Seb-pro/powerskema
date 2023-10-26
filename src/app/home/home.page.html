@@ -1,16 +1,18 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title color="primary">ZtudiePlan</ion-title>
+  <ion-toolbar>
+    <ion-title class="home-header">ZtudiePlan</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-segment [(ngModel)]="calendar.mode">
-    <ion-segment-button value="day">DAG</ion-segment-button>
-    <ion-segment-button value="week">UGE</ion-segment-button>
-    <ion-segment-button value="month">MÅNED</ion-segment-button>
-  </ion-segment>
-  <ion-row class="ion-text-center">
+  <div class="selctor-segment">
+    <ion-segment [(ngModel)]="calendar.mode">
+      <ion-segment-button value="day">DAG</ion-segment-button>
+      <ion-segment-button value="week">UGE</ion-segment-button>
+      <ion-segment-button value="month">MÅNED</ion-segment-button>
+    </ion-segment>
+  </div>
+  <ion-row class="viewTitle">
     <ion-col size="3">
       <ion-button fill="clear" (click)="previousMonth()">
         <ion-icon name="arrow-back" slot="icon-only"></ion-icon>

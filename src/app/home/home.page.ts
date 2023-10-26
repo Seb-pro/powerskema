@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CalendarMode } from 'ionic7-calendar/calendar.interface';
 import { CalendarComponent } from 'ionic7-calendar';
 import { ModalController } from '@ionic/angular';
@@ -9,6 +9,7 @@ import { ModalPage } from '../modal/modal.page';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomePage {
   calendar = {

@@ -29,10 +29,12 @@
   </ion-row>
   <calendar
     [calendarMode]="calendar.mode"
-    (onTitleChanged)="onViewTitleChange($event)"
     [formatHourColumn]="calendar.formatHourColumn"
     [formatWeekTitle]="calendar.formatWeekTitle"
     [sliderOptions]="options"
+    [eventSource]="eventSource"
+    (onTimeSelected)="onTimeSelected($event)"
+    (onTitleChanged)="onViewTitleChange($event)"
     [startingDayWeek]="1"
     [startingDayMonth]="1"
     [startHour]="6"

@@ -1,28 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 
 import { ModalController } from '@ionic/angular';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.page.html',
   styleUrls: ['./modal.page.scss'],
 })
-export class ModalPage implements OnInit {
-  newEvent = {
+export class ModalPage {
+  newEvent: any = {
     title: '',
     allDay: false,
-    startTime: new Date(),
-    endTime: new Date(),
+    startTime: null,
+    endTime: null,
   };
-  validationForm!: FormGroup;
+  showStart = false;
+  showEnd = false;
+  formattedSart: string = '';
+  formattedend = '';
+
   constructor(private modalCtrl: ModalController) {}
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  addNewEvent() {}
+  startTimeChanged(value: any) {
+    this.newEvent.startTime = value;
+    this.formattedSart = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+  }
 
-  ngOnInit() {}
+  endTimeChanged(value: any) {
+    this.newEvent.endTime = value;
+    this.formattedend = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+  }
+  addNewEvent() {
+    this.modalCtrl.dismiss({ event: this.newEvent });
+  }
+}
+
+export interface Event {
+  title: string;
+  allDay: boolean;
+  startTime?: string;
+  endTime?: string;
 }

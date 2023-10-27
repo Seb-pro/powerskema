@@ -1,11 +1,17 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar class="modal-header" color="darkgrey">
     <ion-buttons slot="start">
-      <ion-button color="dark" (click)="cancel()">Annullere</ion-button>
+      <ion-button class="cancel-button" (click)="cancel()"
+        >Annullere</ion-button
+      >
     </ion-buttons>
-    <ion-title class="ion-text-center">Ny Begivenhed</ion-title>
+    <ion-title class="modal-title on-text-center">Ny Begivenhed</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="addNewEvent()" [disabled]="!newEvent.title"
+      <ion-button
+        class="add-button"
+        (click)="addNewEvent()"
+        strong
+        [disabled]="!newEvent.title"
         >tilføj</ion-button
       >
     </ion-buttons>
@@ -13,10 +19,40 @@
 </ion-header>
 
 <ion-content
-  ><div>
-    <ion-input
-      type="text"
-      [(ngModel)]="newEvent.title"
-      placeholder="Title"
-    /></div
-></ion-content>
+  ><div class="group">
+    <ion-input type="text" [(ngModel)]="newEvent.title" placeholder="Title" />
+  </div>
+
+  <div class="group">
+    <ion-item lines="none">
+      <ion-label>Hele dagen</ion-label>
+      <ion-toggle [(ngModel)]="newEvent.allDay"></ion-toggle>
+    </ion-item>
+
+    <ion-item (click)="showStart = !showStart">
+      <ion-label>Start Dato: </ion-label>
+      <ion-text slot="end">{{formattedSart }}</ion-text>
+    </ion-item>
+    <ion-datetime
+      class="date-time"
+      #start
+      *ngIf="showStart"
+      [value]="newEvent.startTime"
+      [presentation]="newEvent.allDay ? 'date' : 'time-date'"
+      (ionChange)="startTimeChanged(start.value)"
+    ></ion-datetime>
+
+    <ion-item (click)="showEnd = !showEnd">
+      <ion-label>Slut Dato</ion-label>
+      <ion-text slot="end">{{[formattedend]}}</ion-text>
+    </ion-item>
+    <ion-datetime
+      class="date-time"
+      #end
+      *ngIf="showEnd"
+      [value]="newEvent.endTime"
+      [presentation]="newEvent.allDay ? 'date' : 'time-date'"
+      (ionChange)="endTimeChanged(end.value)"
+    ></ion-datetime>
+  </div>
+</ion-content>

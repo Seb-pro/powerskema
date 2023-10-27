@@ -1,10 +1,10 @@
-import { Component, ViewChild, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CalendarMode } from 'ionic7-calendar/calendar.interface';
 import { CalendarComponent } from 'ionic7-calendar';
-import { ModalController } from '@ionic/angular';
+import { IonRouterOutlet } from '@ionic/angular';
 
-import { ModalPage } from '../modal/modal.page';
 import { format, parseISO } from 'date-fns';
+import { IonModal } from '@ionic/angular/common';
 
 @Component({
   selector: 'app-home',
@@ -36,28 +36,18 @@ export class HomePage {
 
   eventSource: any[] = [];
   viewTitle: string = '';
+  presentingElemement: any;
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
+  @ViewChild('modal') modal!: IonModal;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(private ionRouterOutlet: IonRouterOutlet) {
+    this.presentingElemement = ionRouterOutlet.nativeEl;
+  }
 
-  async openList() {
-    const modal = await this.modalCtrl.create({
-      component: ModalPage,
-      componentProps: {
-        newEvent: {
-          title: this.newEvent.title,
-          allDay: this.newEvent.allDay,
-          startTime: this.newEvent.startTime,
-          endTime: this.newEvent.endTime,
-        },
-
-        formattedSart: this.formattedSart,
-        formattedend: this.formattedend,
-      },
-    });
-
-    await modal.present();
+  startTimeChanged(value: any) {
+    this.newEvent.startTime = value;
+    this.formattedSart = format(parseISO(value), 'HH:MM, MMM d, yyyy');
   }
 
   previousMonth() {
@@ -70,6 +60,7 @@ export class HomePage {
   onViewTitleChange(title: string) {
     this.viewTitle = title;
   }
+
   onTimeSelected = (ev: { selectedTime: Date; events: any[] }) => {
     this.formattedSart = format(ev.selectedTime, 'HH:MM, MMM d, yyyy');
     this.newEvent.startTime = format(ev.selectedTime, "yyyy-MM-dd'T'HH:mm:ss");
@@ -78,8 +69,18 @@ export class HomePage {
     this.formattedend = format(later, 'HH:MM, MMM d, yyyy');
     this.newEvent.endTime = format(later, "yyyy-MM-dd'T'HH:mm:ss");
 
-    if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
-      this.openList();
+    console.log(this.newEvent);
+    // if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
+    //   this.modal.present();
+    // }
+    if (this.calendar.mode === 'day') {
+      this.modal.present();
     }
   };
+
+  endTimeChanged(value: any) {
+    this.newEvent.endTime = value;
+    this.formattedend = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+  }
+  addNewEvent() {}
 }

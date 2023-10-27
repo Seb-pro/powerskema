@@ -1,5 +1,6 @@
 /*Calendar Global CSS*/
 calendar {
+  color: var(--ion-color-light);
   .weekview-allday-table {
     display: none;
   }
@@ -14,6 +15,11 @@ calendar {
   }
   .dayview-allday-content-wrapper {
     height: 0px;
+  }
+  .monthview-selected {
+    font-weight: bold;
+    background-color: var(--ion-color-light) !important;
+    color: #333 !important;
   }
 }
 

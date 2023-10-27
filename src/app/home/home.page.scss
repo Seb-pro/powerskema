@@ -1,3 +1,65 @@
-ion-title {
+// Background color
+ion-content::part(background) {
+  background: var(--ion-color-dark);
+}
+
+// Header style
+
+.header {
+  background: var(--ion-color-darkgrey);
+  color: var(--ion-color-primary);
   text-align: center;
+}
+
+//Segment Day/Week/Month Style
+.selctor-segment {
+  margin: 1rem 1rem 0 1rem;
+  border-radius: 0.4rem;
+  background: var(--ion-color-light);
+  ion-segment-button {
+    --background-checked: var(--ion-color-primary);
+    --color-checked: var(--ion-color-dark);
+    --indicator-color: transparent !important;
+  }
+}
+// viewTitle/the current month title Style
+.viewTitle {
+  text-align: center;
+  h2 {
+    color: var(--ion-color-light);
+  }
+}
+
+// Monthview style
+.monthview-container {
+  .event-detail-container {
+    display: none;
+  }
+  th {
+    background: var(--ion-color-darkgrey);
+    color: var(--ion-color-light);
+  }
+  tbody {
+    td.text-muted {
+      background: var(--ion-color-darkgrey);
+    }
+    tr:nth-child(odd) td:nth-child(odd):not(.text-muted) {
+      background: var(--ion-color-secondary);
+    }
+    tr:nth-child(even) td:nth-child(even):not(.text-muted) {
+      background: var(--ion-color-secondary);
+    }
+    tr:nth-child(even) td:nth-child(odd):not(.text-muted) {
+      background: var(--ion-color-primary);
+    }
+    tr:nth-child(odd) td:nth-child(even):not(.text-muted) {
+      background: var(--ion-color-primary);
+    }
+  }
+}
+// Weekview Style
+.weekview-container {
+}
+// Dayview Style
+.dayview-container {
 }

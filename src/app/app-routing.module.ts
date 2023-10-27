@@ -16,7 +16,11 @@ const routes: Routes = [
     path: 'modal',
     loadChildren: () =>
       import('./modal/modal.module').then((m) => m.ModalPageModule),
+  },  {
+    path: 'home-work',
+    loadChildren: () => import('./overview/home-work/home-work.module').then( m => m.HomeWorkPageModule)
   },
+
 ];
 
 @NgModule({

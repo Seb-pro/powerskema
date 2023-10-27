@@ -1,0 +1,72 @@
+// Background color
+ion-content::part(background) {
+    background: var(--ion-color-dark);
+  }
+  
+  // Header style
+  
+  .header {
+    background: var(--ion-color-darkgrey);
+    color: var(--ion-color-primary);
+    text-align: center;
+  }
+  
+  //Segment Day/Week/Month Style
+  .selctor-segment {
+    margin: 1rem 1rem 0 1rem;
+    border-radius: 0.4rem;
+    background: var(--ion-color-light);
+    ion-segment-button {
+      --background-checked: var(--ion-color-primary);
+      --color-checked: var(--ion-color-dark);
+      --indicator-color: transparent !important;
+    }
+  }
+  
+  //book background
+  .book-bg, .ass-bg, .event-bg {
+    color: white; /* Change this to your desired icon color */
+    padding: 10px; /* Adjust padding to control the size of the background box */
+    border-radius: 5px; /* Adjust border-radius for rounded corners */
+    display: inline-block; /* Ensures the background only takes up the necessary space */
+    margin-right: 10px;
+  }
+
+  .book-bg {
+    background-color: #5096A5; /* Change this to your desired background color */;
+  }
+  .ass-bg {
+    background-color: #CE4B4B;
+  }
+
+  .event-bg {
+    background-color: #59B27C;
+  }
+
+  ion-checkbox {
+    --size: 32px;
+    --checkbox-background-checked: #4F4F4F;
+    --checkmark-color: #fff;
+    --checkmark-width: 3px;
+    --border-color-checked: #4f4f4f;
+    background-color: #4F4F4F;
+    border-radius: 6px;
+  }
+  
+  ion-checkbox::part(container) {
+    border-radius: 6px;
+    background-color: #4F4F4F;
+  }
+
+  ion-card {
+    background-color: #222423 !important;
+  }
+
+  ion-item, ion-card-title, p {
+    --background: #222423;
+    color: #fff;
+  }
+
+  .list-ios {
+    background: none;
+  }

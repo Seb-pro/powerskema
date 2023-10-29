@@ -20,6 +20,14 @@ const routes: Routes = [
     path: 'home-work',
     loadChildren: () => import('./overview/home-work/home-work.module').then( m => m.HomeWorkPageModule)
   },
+  {
+    path: 'assignment',
+    loadChildren: () => import('./overview/assignment/assignment.module').then( m => m.AssignmentPageModule)
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('./overview/events/events.module').then( m => m.EventsPageModule)
+  },
 
 ];
 

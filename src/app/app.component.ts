@@ -12,6 +12,9 @@ export class AppComponent {
     { title: 'Afleveringer', url: '/', icon: 'newspaper' },
     { title: 'Events', url: '/', icon: 'people' },
   ];
+
+  // Not sure if this is needed
   public labels = ['Skema', 'Lektier', 'Afleveringer', 'Events'];
+ 
   constructor() {}
 }

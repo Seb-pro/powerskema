@@ -9,14 +9,14 @@
   <ion-card class="indholdCard">
     <ion-card-header>
       <ion-card-title>
-        <ion-segment class="segKnap" value="default">
-          <ion-segment-button value="book" value="default">
+        <ion-segment class="segKnap" value="book" [(ngModel)]="selectedSegment">
+          <ion-segment-button value="book" value="default" [routerLink]="['/home-work']">
             <ion-icon name="book" class="book-bg"></ion-icon>
           </ion-segment-button>
-          <ion-segment-button value="newspaper">
+          <ion-segment-button value="newspaper" [routerLink]="['/assignment']">
             <ion-icon name="newspaper" class="ass-bg"></ion-icon>
           </ion-segment-button>
-          <ion-segment-button value="people">
+          <ion-segment-button value="people" [routerLink]="['/events']">
             <ion-icon name="people" class="event-bg"></ion-icon>
           </ion-segment-button>
         </ion-segment>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsPage implements OnInit {
 
+  selectedSegment: string = 'events';
+
   constructor() { }
 
   ngOnInit() {

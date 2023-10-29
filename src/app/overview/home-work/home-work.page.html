@@ -4,23 +4,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Lektier</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   
-  <ion-card>
+  <ion-card class="indholdCard">
     <ion-card-header>
       <ion-card-title>
-        <ion-segment>
-          <ion-segment-button value="book">
+        <ion-segment class="segKnap" value="default">
+          <ion-segment-button value="book" value="default">
             <ion-icon name="book" class="book-bg"></ion-icon>
           </ion-segment-button>
-          <ion-segment-button value="archive">
-            <ion-icon name="archive" class="ass-bg"></ion-icon>
+          <ion-segment-button value="newspaper">
+            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
           </ion-segment-button>
           <ion-segment-button value="people">
             <ion-icon name="people" class="event-bg"></ion-icon>
@@ -29,7 +23,10 @@
       </ion-card-title>
     </ion-card-header>
   
+<hr>
+
     <ion-card-content>
+
         <ion-list lines="none">
           <ion-item>
             <ion-icon name="book" class="book-bg"></ion-icon>

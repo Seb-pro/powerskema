@@ -70,3 +70,27 @@ ion-content::part(background) {
   .list-ios {
     background: none;
   }
+
+  .indholdCard {
+    margin-top: 80px;
+  }
+//background-color: #777;
+
+//   .segKnap {
+//     ion-segment::part(background) {
+//        background: var(--ion-color-dark);
+//    }
+//  }
+
+  //Segment Day/Week/Month Style
+.segKnap {
+    // margin: 1rem 1rem 0 1rem;
+    border-radius: 0.4rem;
+    background: var(--ion-color-darkgrey);
+    ion-segment-button {
+      --background-checked: var(--ion-color-light);
+      --color-checked: var(--ion-color-dark);
+      --indicator-color: transparent !important;
+      padding: 10px 0px 10px 0px;
+    }
+  }

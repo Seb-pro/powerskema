@@ -6,15 +6,12 @@ import { IonicModule } from '@ionic/angular';
 
 import { EventsPageRoutingModule } from './events-routing.module';
 
-import { EventsPage } from './events.page';
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     EventsPageRoutingModule
-  ],
-  declarations: [EventsPage]
+  ]
 })
 export class EventsPageModule {}

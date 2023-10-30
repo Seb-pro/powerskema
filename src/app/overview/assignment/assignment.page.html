@@ -1,77 +1,42 @@
-<ion-header>
-  <ion-toolbar class="header" color="darkgrey">
-    <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>ZtudiePlan</ion-title>
-    <ion-icon slot="end" name="person"></ion-icon>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  
-  <ion-card class="indholdCard">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-segment class="segKnap" value="book" [(ngModel)]="selectedSegment">
-          <ion-segment-button value="book" value="default" [routerLink]="['/home-work']">
-            <ion-icon name="book" class="book-bg"></ion-icon>
-          </ion-segment-button>
-          <ion-segment-button value="newspaper" [routerLink]="['/assignment']">
-            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
-          </ion-segment-button>
-          <ion-segment-button value="people" [routerLink]="['/events']">
-            <ion-icon name="people" class="event-bg"></ion-icon>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-
-        <ion-list lines="none">
-          <ion-item>
-            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
-            <ion-label>
-              <p>Dato</p>
-              <h2>Assignment</h2>
-            </ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
-            <ion-label>
-              <p>Dato</p>
-              <h2>Assignment</h2>
-            </ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
-            <ion-label>
-              <p>Dato</p>
-              <h2>Assignment</h2>
-            </ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
-            <ion-label>
-              <p>Dato</p>
-              <h2>Assignment</h2>
-            </ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
-            <ion-label>
-              <p>Dato</p>
-              <h2>Assignment</h2>
-            </ion-label>
-            <ion-checkbox></ion-checkbox>
-          </ion-item>
-        </ion-list>
-    </ion-card-content>
-  </ion-card>
-
-</ion-content>
+<ion-list lines="none">
+  <ion-item>
+    <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+    <ion-label>
+      <p>Dato</p>
+      <h2>Assignment</h2>
+    </ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+    <ion-label>
+      <p>Dato</p>
+      <h2>Assignment</h2>
+    </ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+    <ion-label>
+      <p>Dato</p>
+      <h2>Assignment</h2>
+    </ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+    <ion-label>
+      <p>Dato</p>
+      <h2>Assignment</h2>
+    </ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+    <ion-label>
+      <p>Dato</p>
+      <h2>Assignment</h2>
+    </ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+</ion-list>

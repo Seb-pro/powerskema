@@ -6,15 +6,12 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomeWorkPageRoutingModule } from './home-work-routing.module';
 
-import { HomeWorkPage } from './home-work.page';
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     HomeWorkPageRoutingModule
-  ],
-  declarations: [HomeWorkPage]
+  ]
 })
 export class HomeWorkPageModule {}

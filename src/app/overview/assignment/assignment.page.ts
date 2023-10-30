@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignmentPage implements OnInit {
 
-  selectedSegment: string = 'assignment';
-
   constructor() { }
 
   ngOnInit() {

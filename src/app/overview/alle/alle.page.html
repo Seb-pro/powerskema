@@ -17,15 +17,15 @@
       <ion-card-title>
         <ion-segment class="segKnap" value="book">
 
-          <ion-segment-button value="book" value="default" (click)="customFunction">
+          <ion-segment-button value="book" value="default" (click)="onButtonSelected('button1')">
             <ion-icon name="book" class="book-bg"></ion-icon>
           </ion-segment-button>
 
-          <ion-segment-button value="newspaper" (click)="customFunction">
+          <ion-segment-button value="newspaper" (click)="onButtonSelected('button2')">
             <ion-icon name="newspaper" class="ass-bg"></ion-icon>
           </ion-segment-button>
 
-          <ion-segment-button value="people" (click)="customFunction">
+          <ion-segment-button value="people" (click)="onButtonSelected('button3')">
             <ion-icon name="people" class="event-bg"></ion-icon>
           </ion-segment-button>
 
@@ -33,17 +33,16 @@
       </ion-card-title>
     </ion-card-header>
     
-    <ng-container *ngIf="true">
-      <h2>Lektie1</h2>
-    </ng-container>
+    <div *ngIf="selectedButton==='button1'">
+      <app-home-work/>
+    </div>
 
-    <ng-container *ngIf="true">
-      <h2>Lektie2</h2>
-    </ng-container>
-
-    <ng-container *ngIf="true">
-      <h2>Lektie3</h2>
-    </ng-container>
+    <div *ngIf="selectedButton==='button2'">
+      <app-assignment/>
+    </div>
+    <div *ngIf="selectedButton==='button3'">
+      <app-events/>
+    </div>
 
   </ion-card>
 

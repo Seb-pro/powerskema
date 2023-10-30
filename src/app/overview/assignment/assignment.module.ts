@@ -6,15 +6,12 @@ import { IonicModule } from '@ionic/angular';
 
 import { AssignmentPageRoutingModule } from './assignment-routing.module';
 
-import { AssignmentPage } from './assignment.page';
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     AssignmentPageRoutingModule
-  ],
-  declarations: [AssignmentPage]
+  ]
 })
 export class AssignmentPageModule {}

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -8,11 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AllePage implements OnInit {
 
-  @Input() customFunction: ()=> void = ()=>{}; //laver en default funktion ()=>{} er for at omgå "Strict = false" i tsconfig.json
+  selectedButton: string = "button1";
 
-  constructor() { }
+  onButtonSelected(button:string){
+    this.selectedButton=button;
+  }
+
+  constructor(private route:ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.params.subscribe(params=>{
+      this.selectedButton=params['selectedButton']
+    })
   }
 
 }

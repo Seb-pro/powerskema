@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeWorkPage implements OnInit {
 
-  selectedSegment: string = 'home-work';
-
   constructor() { }
 
   ngOnInit() {

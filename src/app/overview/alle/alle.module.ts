@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AllePageRoutingModule } from './alle-routing.module';
 
 import { AllePage } from './alle.page';
+import { SharedModule } from 'src/app/components/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AllePageRoutingModule
+    AllePageRoutingModule,
+    SharedModule
   ],
   declarations: [AllePage]
 })

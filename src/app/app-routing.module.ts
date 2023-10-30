@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AllePage } from './overview/alle/alle.page';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
     path: 'modal',
     loadChildren: () =>
       import('./modal/modal.module').then((m) => m.ModalPageModule),
-  },  {
+  },
+  {
     path: 'home-work',
     loadChildren: () => import('./overview/home-work/home-work.module').then( m => m.HomeWorkPageModule)
   },
@@ -29,9 +31,13 @@ const routes: Routes = [
     loadChildren: () => import('./overview/events/events.module').then( m => m.EventsPageModule)
   },
   {
-    path: 'alle',
+    path: 'alle/:selectedButton',
     loadChildren: () => import('./overview/alle/alle.module').then( m => m.AllePageModule)
-  },
+  },  
+  /* {
+    path: 'alle/:selectedButton',
+    component: AllePage
+  } */
 
 ];
 

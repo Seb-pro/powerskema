@@ -15,7 +15,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/event", (req, res, next) => {
+app.use("/api/events", (req, res, next) => {
   const events = [
     {
       eventid: 1,

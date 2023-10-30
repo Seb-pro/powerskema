@@ -6,6 +6,7 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular/common';
 import { Event, EventsService } from '../services/events.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +18,10 @@ export class HomePage implements OnInit {
   calendar = {
     mode: 'month' as CalendarMode,
     currentDate: new Date(),
-    formatHourColumn: 'H:MM',
+    formatHourColumn: 'H:mm',
     formatWeekTitle: `MMM 'uge' w`,
   };
   options = {
-    spaceBetween: 10,
     threshold: 50,
   };
   newEvent: any = {
@@ -39,6 +39,7 @@ export class HomePage implements OnInit {
   formattedend = '';
 
   eventSource: any[] = [];
+  eventSubsription!: Subscription;
   viewTitle: string = '';
   presentingElemement: any;
 
@@ -53,13 +54,15 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    const data: Event[] = [];
-    this.eventService.getEvents().subscribe((res) => {
-      data[res];
-      this.eventSource.push(data);
-      this.myCalendar.loadEvents();
-    });
-    console.log(this.eventSource);
+    this.eventService.getEvents();
+    this.eventSubsription = this.eventService
+      .UpdateEventListner()
+      .subscribe((events: Event[]) => {
+        this.newEvent = events;
+        this.eventSource.push(...this.newEvent);
+        this.myCalendar.loadEvents();
+        console.log(this.eventSource);
+      });
   }
 
   previousMonth() {
@@ -74,14 +77,13 @@ export class HomePage implements OnInit {
   }
 
   onTimeSelected = (ev: { selectedTime: Date; events: any[] }) => {
-    this.formattedSart = format(ev.selectedTime, 'HH:MM, MMM d, yyyy');
+    this.formattedSart = format(ev.selectedTime, 'HH:mm, MMM d, yyyy');
     this.newEvent.startTime = format(ev.selectedTime, "yyyy-MM-dd'T'HH:mm:ss");
 
     const later = ev.selectedTime.setHours(ev.selectedTime.getHours() + 1);
-    this.formattedend = format(later, 'HH:MM, MMM d, yyyy');
+    this.formattedend = format(later, 'HH:mm MMM d, yyyy');
     this.newEvent.endTime = format(later, "yyyy-MM-dd'T'HH:mm:ss");
 
-    console.log(this.newEvent);
     // if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
     //   this.modal.present();
     // }
@@ -92,12 +94,12 @@ export class HomePage implements OnInit {
 
   startTimeChanged(value: any) {
     this.newEvent.startTime = value;
-    this.formattedSart = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+    this.formattedSart = format(parseISO(value), 'HH:mm, MMM d, yyyy');
   }
 
   endTimeChanged(value: any) {
     this.newEvent.endTime = value;
-    this.formattedend = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+    this.formattedend = format(parseISO(value), 'HH:mm, MMM d, yyyy');
   }
   addNewEvent() {
     //const addEvent: Event

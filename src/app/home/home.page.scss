@@ -33,7 +33,6 @@ ion-content::part(background) {
 // Monthview style
 .monthview-container {
   .event-detail-container {
-    display: none;
   }
   th {
     background: var(--ion-color-darkgrey);
@@ -62,4 +61,37 @@ ion-content::part(background) {
 }
 // Dayview Style
 .dayview-container {
+}
+
+.modal {
+  ion-content::part(background) {
+    background: var(--ion-color-dark);
+  }
+
+  .modal-header {
+    background: var(--ion-color-darkgrey);
+    .cancel-button {
+      color: var(--ion-color-light);
+    }
+    .modal-title {
+      color: var(--ion-color-primary);
+    }
+    .add-button {
+      color: var(--ion-color-primary);
+    }
+  }
+
+  .group {
+    border-radius: 10px;
+    margin: 20px 10px 20px 10px;
+    background-color: var(--ion-color-light);
+    ion-item {
+      background-color: var(--ion-color-light);
+      border-radius: 10px;
+      margin: 20px 10px 20px 10px;
+    }
+    .date-time {
+      margin-left: 1rem;
+    }
+  }
 }

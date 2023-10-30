@@ -1,10 +1,12 @@
-import { Component, ViewChild, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import { CalendarMode } from 'ionic7-calendar/calendar.interface';
 import { CalendarComponent } from 'ionic7-calendar';
-import { ModalController } from '@ionic/angular';
+import { IonRouterOutlet } from '@ionic/angular';
 
-import { ModalPage } from '../modal/modal.page';
 import { format, parseISO } from 'date-fns';
+import { IonModal } from '@ionic/angular/common';
+import { Event, EventsService } from '../services/events.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,22 +14,24 @@ import { format, parseISO } from 'date-fns';
   styleUrls: ['home.page.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HomePage {
+export class HomePage implements OnInit {
   calendar = {
     mode: 'month' as CalendarMode,
     currentDate: new Date(),
-    formatHourColumn: 'H:MM',
+    formatHourColumn: 'H:mm',
     formatWeekTitle: `MMM 'uge' w`,
   };
   options = {
-    spaceBetween: 10,
     threshold: 50,
   };
   newEvent: any = {
     title: '',
     allDay: false,
-    startTime: '',
-    endTime: '',
+    startTime: null,
+    endTime: null,
+    category: '',
+    subject: '',
+    description: '',
   };
   showStart = false;
   showEnd = false;
@@ -35,29 +39,30 @@ export class HomePage {
   formattedend = '';
 
   eventSource: any[] = [];
+  eventSubsription!: Subscription;
   viewTitle: string = '';
+  presentingElemement: any;
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
+  @ViewChild('modal') modal!: IonModal;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private ionRouterOutlet: IonRouterOutlet,
+    private eventService: EventsService
+  ) {
+    this.presentingElemement = ionRouterOutlet.nativeEl;
+  }
 
-  async openList() {
-    const modal = await this.modalCtrl.create({
-      component: ModalPage,
-      componentProps: {
-        newEvent: {
-          title: this.newEvent.title,
-          allDay: this.newEvent.allDay,
-          startTime: this.newEvent.startTime,
-          endTime: this.newEvent.endTime,
-        },
-
-        formattedSart: this.formattedSart,
-        formattedend: this.formattedend,
-      },
-    });
-
-    await modal.present();
+  ngOnInit() {
+    this.eventService.getEvents();
+    this.eventSubsription = this.eventService
+      .UpdateEventListner()
+      .subscribe((events: Event[]) => {
+        this.newEvent = events;
+        this.eventSource.push(...this.newEvent);
+        this.myCalendar.loadEvents();
+        console.log(this.eventSource);
+      });
   }
 
   previousMonth() {
@@ -70,16 +75,33 @@ export class HomePage {
   onViewTitleChange(title: string) {
     this.viewTitle = title;
   }
+
   onTimeSelected = (ev: { selectedTime: Date; events: any[] }) => {
-    this.formattedSart = format(ev.selectedTime, 'HH:MM, MMM d, yyyy');
+    this.formattedSart = format(ev.selectedTime, 'HH:mm, MMM d, yyyy');
     this.newEvent.startTime = format(ev.selectedTime, "yyyy-MM-dd'T'HH:mm:ss");
 
     const later = ev.selectedTime.setHours(ev.selectedTime.getHours() + 1);
-    this.formattedend = format(later, 'HH:MM, MMM d, yyyy');
+    this.formattedend = format(later, 'HH:mm MMM d, yyyy');
     this.newEvent.endTime = format(later, "yyyy-MM-dd'T'HH:mm:ss");
 
-    if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
-      this.openList();
+    // if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
+    //   this.modal.present();
+    // }
+    if (this.calendar.mode === 'day') {
+      this.modal.present();
     }
   };
+
+  startTimeChanged(value: any) {
+    this.newEvent.startTime = value;
+    this.formattedSart = format(parseISO(value), 'HH:mm, MMM d, yyyy');
+  }
+
+  endTimeChanged(value: any) {
+    this.newEvent.endTime = value;
+    this.formattedend = format(parseISO(value), 'HH:mm, MMM d, yyyy');
+  }
+  addNewEvent() {
+    //const addEvent: Event
+  }
 }

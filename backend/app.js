@@ -71,6 +71,28 @@ app.use("/api/events", (req, res, next) => {
       description:
         "Jeg ved ikke helt hvad det her drejer sig om, men det lyder som noget med et foredrag eller sådan noget. Jeg fylder bare lidt extra tekst på her, så vi kan teste hvorda en længere beskrivelse kommer til at se ud når vi tilføjer den i vores kode",
     },
+    {
+      eventid: 5,
+      title: "Therma Group",
+      allDay: false,
+      startTime: "2023-10-30T16:00:00Z",
+      endTime: "2023-10-30T18:00:00Z",
+      category: "Events",
+      subject: "Girls in IT",
+      description:
+        "Jeg ved ikke helt hvad det her drejer sig om, men det lyder som noget med et foredrag eller sådan noget. Jeg fylder bare lidt extra tekst på her, så vi kan teste hvorda en længere beskrivelse kommer til at se ud når vi tilføjer den i vores kode",
+    },
+    {
+      eventid: 6,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-10-30T08:10:00Z",
+      endTime: "2023-10-30T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
   ];
   res.status(200).json({
     message: "Events fetched succesfully",

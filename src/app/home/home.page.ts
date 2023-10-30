@@ -1,10 +1,11 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import { CalendarMode } from 'ionic7-calendar/calendar.interface';
 import { CalendarComponent } from 'ionic7-calendar';
 import { IonRouterOutlet } from '@ionic/angular';
 
 import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular/common';
+import { Event, EventsService } from '../services/events.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { IonModal } from '@ionic/angular/common';
   styleUrls: ['home.page.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HomePage {
+export class HomePage implements OnInit {
   calendar = {
     mode: 'month' as CalendarMode,
     currentDate: new Date(),
@@ -26,8 +27,11 @@ export class HomePage {
   newEvent: any = {
     title: '',
     allDay: false,
-    startTime: '',
-    endTime: '',
+    startTime: null,
+    endTime: null,
+    category: '',
+    subject: '',
+    description: '',
   };
   showStart = false;
   showEnd = false;
@@ -41,13 +45,21 @@ export class HomePage {
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
   @ViewChild('modal') modal!: IonModal;
 
-  constructor(private ionRouterOutlet: IonRouterOutlet) {
+  constructor(
+    private ionRouterOutlet: IonRouterOutlet,
+    private eventService: EventsService
+  ) {
     this.presentingElemement = ionRouterOutlet.nativeEl;
   }
 
-  startTimeChanged(value: any) {
-    this.newEvent.startTime = value;
-    this.formattedSart = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+  ngOnInit() {
+    const data: Event[] = [];
+    this.eventService.getEvents().subscribe((res) => {
+      data[res];
+      this.eventSource.push(data);
+      this.myCalendar.loadEvents();
+    });
+    console.log(this.eventSource);
   }
 
   previousMonth() {
@@ -78,9 +90,16 @@ export class HomePage {
     }
   };
 
+  startTimeChanged(value: any) {
+    this.newEvent.startTime = value;
+    this.formattedSart = format(parseISO(value), 'HH:MM, MMM d, yyyy');
+  }
+
   endTimeChanged(value: any) {
     this.newEvent.endTime = value;
     this.formattedend = format(parseISO(value), 'HH:MM, MMM d, yyyy');
   }
-  addNewEvent() {}
+  addNewEvent() {
+    //const addEvent: Event
+  }
 }

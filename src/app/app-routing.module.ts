@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'events',
     loadChildren: () => import('./overview/events/events.module').then( m => m.EventsPageModule)
   },
+  {
+    path: 'alle',
+    loadChildren: () => import('./overview/alle/alle.module').then( m => m.AllePageModule)
+  },
 
 ];
 

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="header" color="darkgrey">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ZtudiePlan</ion-title>
+    <ion-icon slot="end" name="person"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  
+
+  <ion-card class="indholdCard">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-segment class="segKnap" value="book">
+
+          <ion-segment-button value="book" value="default" (click)="customFunction">
+            <ion-icon name="book" class="book-bg"></ion-icon>
+          </ion-segment-button>
+
+          <ion-segment-button value="newspaper" (click)="customFunction">
+            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+          </ion-segment-button>
+
+          <ion-segment-button value="people" (click)="customFunction">
+            <ion-icon name="people" class="event-bg"></ion-icon>
+          </ion-segment-button>
+
+        </ion-segment>
+      </ion-card-title>
+    </ion-card-header>
+    
+    <ng-container *ngIf="true">
+      <h2>Lektie1</h2>
+    </ng-container>
+
+    <ng-container *ngIf="true">
+      <h2>Lektie2</h2>
+    </ng-container>
+
+    <ng-container *ngIf="true">
+      <h2>Lektie3</h2>
+    </ng-container>
+
+  </ion-card>
+
+
+</ion-content>

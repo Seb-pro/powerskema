@@ -29,7 +29,10 @@ ion-content::part(background) {
     padding: 10px; /* Adjust padding to control the size of the background box */
     border-radius: 5px; /* Adjust border-radius for rounded corners */
     display: inline-block; /* Ensures the background only takes up the necessary space */
-    margin-right: 10px;
+  }
+
+  ion-label {
+    margin-left: 10px;
   }
 
   .book-bg {
@@ -85,28 +88,3 @@ ion-content::part(background) {
       padding: 10px 0px 10px 0px;
     }
   }
-
-  .menu-container,.show-menu::part(container){
-    width: 55vw;
-}
-
-.menu-item::part(native){
-    background: var(--ion-color-primary);
-    color: var(--ion-color-light);
-    display: flex;
-    flex-direction: column;
-    width: 45vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-    border-radius: 5px;
-    text-transform: uppercase;
-}
-
-.list-ios{
-    background: var(--ion-color-dark);
-}
-
-.menu-label, .menu-icon{
-    margin: .5rem;
-}

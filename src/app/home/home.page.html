@@ -27,19 +27,32 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <calendar
-    [calendarMode]="calendar.mode"
-    [formatHourColumn]="calendar.formatHourColumn"
-    [formatWeekTitle]="calendar.formatWeekTitle"
-    [sliderOptions]="options"
-    [eventSource]="eventSource"
-    (onTimeSelected)="onTimeSelected($event)"
-    (onTitleChanged)="onViewTitleChange($event)"
-    [startingDayWeek]="1"
-    [startingDayMonth]="1"
-    [startHour]="6"
-  >
-  </calendar>
+  <div class="content-background">
+    <ng-template #weekviewHeaderTemplate let-viewDate="viewDate"> 
+      <div class="custom-day-header"> {{ viewDate.dayHeader }} </div> 
+      <div class="week-notifications">
+        <div><ion-badge class="notifications-badge" color="danger">5</ion-badge><ion-icon name="book"></ion-icon></div>
+        <div><ion-badge class="notifications-badge" color="danger">5</ion-badge><ion-icon name="newspaper"></ion-icon></div>
+        <div><ion-badge class="notifications-badge" color="danger">5</ion-badge><ion-icon name="people"></ion-icon></div>
+      </div>
+    </ng-template> 
+    <calendar
+      [calendarMode]="calendar.mode"
+      [formatHourColumn]="calendar.formatHourColumn"
+      [formatWeekTitle]="calendar.formatWeekTitle"
+      [sliderOptions]="options"
+      [eventSource]="eventSource"
+      (onTimeSelected)="onTimeSelected($event)"
+      (onTitleChanged)="onViewTitleChange($event)"
+      [startingDayWeek]="1"
+      [startingDayMonth]="1"
+      [startHour]="6"
+      [weekviewHeaderTemplate]="weekviewHeaderTemplate"
+    >
+    </calendar>
+  </div>
+
+  
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openList()">

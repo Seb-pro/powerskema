@@ -38,7 +38,7 @@
     </div>
 
     <div *ngIf="selectedButton==='button2'">
-      <app-assignment/>
+      <app-assignment [item]="this.newEvent.category"/>
     </div>
     <div *ngIf="selectedButton==='button3'">
       <app-events/>

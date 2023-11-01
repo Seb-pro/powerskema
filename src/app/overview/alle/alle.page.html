@@ -9,42 +9,48 @@
 </ion-header>
 
 <ion-content>
-  
-  
-
   <ion-card class="indholdCard">
     <ion-card-header>
       <ion-card-title>
         <ion-segment class="segKnap" value="book">
-
-          <ion-segment-button value="book" value="default" (click)="onButtonSelected('button1')">
+          <ion-segment-button
+            value="book"
+            value="default"
+            (click)="onButtonSelected('lektier')"
+          >
             <ion-icon name="book" class="book-bg"></ion-icon>
           </ion-segment-button>
 
-          <ion-segment-button value="newspaper" (click)="onButtonSelected('button2')">
+          <ion-segment-button
+            value="newspaper"
+            (click)="onButtonSelected('afleveringer')"
+          >
             <ion-icon name="newspaper" class="ass-bg"></ion-icon>
           </ion-segment-button>
 
-          <ion-segment-button value="people" (click)="onButtonSelected('button3')">
+          <ion-segment-button
+            value="people"
+            (click)="onButtonSelected('events')"
+          >
             <ion-icon name="people" class="event-bg"></ion-icon>
           </ion-segment-button>
-
         </ion-segment>
       </ion-card-title>
     </ion-card-header>
-    
-    <div *ngIf="selectedButton==='button1'">
-      <app-home-work/>
-    </div>
 
-    <div *ngIf="selectedButton==='button2'">
-      <app-assignment/>
-    </div>
-    <div *ngIf="selectedButton==='button3'">
-      <app-events/>
-    </div>
-
+    <ng-container *ngFor="let p of newEvent">
+      <div *ngIf="selectedButton==='lektier' && p.category === 'Lektier'">
+        <app-home-work [item]="p.title" />
+      </div>
+      <div>
+        <app-assignment
+          *ngIf="selectedButton==='afleveringer' && p.category === 'Aflevering'"
+          [item]="p.title"
+        />
+      </div>
+      <div *ngIf="selectedButton==='events' && p.category === 'Events'">
+        <app-events [item]="p.title" />
+      </div>
+    </ng-container>
   </ion-card>
-
-
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-work',
@@ -6,12 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-work.page.scss'],
 })
 export class HomeWorkPage implements OnInit {
+  @Input() item = '';
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-
-  }
-
-
+  ngOnInit() {}
 }

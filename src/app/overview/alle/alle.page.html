@@ -40,7 +40,7 @@
 
     <ng-container *ngFor="let p of newEvent">
       <div *ngIf="selectedButton==='lektier' && p.category === 'Lektier'">
-        <app-home-work [item]="p.title" />
+        <app-home-work [item]="p.title" [endTime]="p.endTime" />
       </div>
       <div>
         <app-assignment

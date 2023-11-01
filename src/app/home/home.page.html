@@ -36,6 +36,7 @@
     [formatHourColumn]="calendar.formatHourColumn"
     [formatWeekTitle]="calendar.formatWeekTitle"
     [sliderOptions]="options"
+    [currentDate]="calendar.currentDate"
     [eventSource]="eventSource"
     (onTimeSelected)="onTimeSelected($event)"
     (onTitleChanged)="onViewTitleChange($event)"
@@ -46,8 +47,82 @@
   </calendar>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openList()">
+    <ion-fab-button id="indPutModal">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <!-- Modal -->
+  <ion-modal
+    #modal
+    trigger="indPutModal"
+    class="modal"
+    [presentingElement]="presentingElemement"
+  >
+    <ng-template>
+      <ion-header>
+        <ion-toolbar class="modal-header" color="darkgrey">
+          <ion-buttons slot="start">
+            <ion-button class="cancel-button" (click)="modal.dismiss()"
+              >Annullere</ion-button
+            >
+          </ion-buttons>
+          <ion-title class="modal-title on-text-center"
+            >Ny Begivenhed</ion-title
+          >
+          <ion-buttons slot="end">
+            <ion-button
+              class="add-button"
+              strong
+              [disabled]="!newEvent.title"
+              (click)="addNewEvent()"
+              >tilføj</ion-button
+            >
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="group">
+          <ion-input
+            type="text"
+            [(ngModel)]="newEvent.title"
+            placeholder="Title"
+          />
+        </div>
+
+        <div class="group">
+          <ion-item lines="none">
+            <ion-label>Hele dagen</ion-label>
+            <ion-toggle [(ngModel)]="newEvent.allDay"></ion-toggle>
+          </ion-item>
+
+          <ion-item (click)="showStart = !showStart">
+            <ion-label>Start Dato: </ion-label>
+            <ion-text class="ion-hover" slot="end">{{formattedSart }}</ion-text>
+          </ion-item>
+          <ion-datetime
+            class="date-time"
+            #start
+            *ngIf="showStart"
+            [value]="newEvent.startTime"
+            [presentation]="newEvent.allDay ? 'date' : 'time-date'"
+            (ionChange)="startTimeChanged(start.value)"
+          ></ion-datetime>
+
+          <ion-item (click)="showEnd = !showEnd">
+            <ion-label>Slut Dato</ion-label>
+            <ion-text slot="end">{{[formattedend]}}</ion-text>
+          </ion-item>
+          <ion-datetime
+            class="date-time"
+            #end
+            *ngIf="showEnd"
+            [value]="newEvent.endTime"
+            [presentation]="newEvent.allDay ? 'date' : 'time-date'"
+            (ionChange)="endTimeChanged(end.value)"
+          ></ion-datetime>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

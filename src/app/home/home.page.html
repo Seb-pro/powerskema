@@ -30,24 +30,50 @@
       </ion-button>
     </ion-col>
   </ion-row>
+  <div class="content-background">
+    <ng-template #weekviewHeaderTemplate let-viewDate="viewDate">
+      <div class="custom-day-header">{{ viewDate.dayHeader }}</div>
+      <div class="week-notifications">
+        <div>
+          <ion-badge class="notifications-badge" color="danger">5</ion-badge
+          ><ion-icon name="book"></ion-icon>
+        </div>
+        <div>
+          <ion-badge class="notifications-badge" color="danger">5</ion-badge
+          ><ion-icon name="newspaper"></ion-icon>
+        </div>
+        <div>
+          <ion-badge class="notifications-badge" color="danger">5</ion-badge
+          ><ion-icon name="people"></ion-icon>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #dayviewNormalEventTemplate let-displayEvent="displayEvent">
+      <div class="calendar-event-inner">{{displayEvent.event.title}}</div>
+    </ng-template>
 
-  <calendar
-    [calendarMode]="calendar.mode"
-    [formatHourColumn]="calendar.formatHourColumn"
-    [formatWeekTitle]="calendar.formatWeekTitle"
-    [sliderOptions]="options"
-    [currentDate]="calendar.currentDate"
-    [eventSource]="eventSource"
-    (onEventSelected)="onEventSelected($event)"
-    [autoSelect]="calendar.mode ==='week' ? false : true"
-    (onTimeSelected)="onTimeSelected($event)"
-    (onTitleChanged)="onViewTitleChange($event)"
-    [startingDayWeek]="1"
-    [startingDayMonth]="1"
-    [startHour]="6"
-    [monthviewDisplayEventTemplate]="monthviewDisplayEventTemplate"
-  >
-  </calendar>
+    <calendar
+      [calendarMode]="calendar.mode"
+      [formatHourColumn]="calendar.formatHourColumn"
+      [formatWeekTitle]="calendar.formatWeekTitle"
+      [sliderOptions]="options"
+      [currentDate]="calendar.currentDate"
+      [eventSource]="eventSource"
+      (onEventSelected)="onEventSelected($event)"
+      [autoSelect]="calendar.mode ==='week' ? false : true"
+      (onTimeSelected)="onTimeSelected($event)"
+      (onTitleChanged)="onViewTitleChange($event)"
+      [startingDayWeek]="1"
+      [startingDayMonth]="1"
+      [timeInterval]="60"
+      [startHour]="8"
+      [endHour]="18"
+      [weekviewHeaderTemplate]="weekviewHeaderTemplate"
+      [dayviewNormalEventTemplate]="dayviewNormalEventTemplate"
+      [monthviewDisplayEventTemplate]="monthviewDisplayEventTemplate"
+    >
+    </calendar>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button id="indPutModal">

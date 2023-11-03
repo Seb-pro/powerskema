@@ -61,7 +61,6 @@ export class HomePage implements OnInit {
         this.newEvent = events;
         this.eventSource.push(...this.newEvent);
         this.myCalendar.loadEvents();
-        // console.log(this.eventSource);
       });
   }
 

@@ -33,11 +33,7 @@ const routes: Routes = [
   {
     path: 'alle/:selectedButton',
     loadChildren: () => import('./overview/alle/alle.module').then( m => m.AllePageModule)
-  },  
-  /* {
-    path: 'alle/:selectedButton',
-    component: AllePage
-  } */
+  },
 
 ];
 

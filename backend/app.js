@@ -173,6 +173,138 @@ app.use("/api/events", (req, res, next) => {
       subject: "UX",
       description: "Læs de to kapitler, og tag noter til",
     },
+    {
+      eventid: 16,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-10-30T09:10:00Z",
+      endTime: "2023-10-30T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
+    {
+      eventid: 17,
+      title: "Databaser",
+      allDay: false,
+      startTime: "2023-10-31T09:10:00Z",
+      endTime: "2023-10-31T13:55:00Z",
+      category: "Lektioner",
+      subject: "Databaser",
+      description:
+        "Undervisning i Databaser",
+    },
+    {
+      eventid: 18,
+      title: "UX",
+      allDay: false,
+      startTime: "2023-11-01T09:10:00Z",
+      endTime: "2023-11-01T13:55:00Z",
+      category: "Lektioner",
+      subject: "UX",
+      description:
+        "Undervisning i UX",
+    },
+    {
+      eventid: 19,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-11-03T09:10:00Z",
+      endTime: "2023-11-03T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
+    {
+      eventid: 20,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-11-06T09:10:00Z",
+      endTime: "2023-11-06T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
+    {
+      eventid: 21,
+      title: "Databaser",
+      allDay: false,
+      startTime: "2023-07-31T09:10:00Z",
+      endTime: "2023-07-31T13:55:00Z",
+      category: "Lektioner",
+      subject: "Databaser",
+      description:
+        "Undervisning i Databaser",
+    },
+    {
+      eventid: 22,
+      title: "UX",
+      allDay: false,
+      startTime: "2023-11-08T09:10:00Z",
+      endTime: "2023-11-08T13:55:00Z",
+      category: "Lektioner",
+      subject: "UX",
+      description:
+        "Undervisning i UX",
+    },
+    {
+      eventid: 23,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-11-10T09:10:00Z",
+      endTime: "2023-11-10T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
+    {
+      eventid: 24,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-11-13T09:10:00Z",
+      endTime: "2023-11-13T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
+    {
+      eventid: 25,
+      title: "Databaser",
+      allDay: false,
+      startTime: "2023-07-14T09:10:00Z",
+      endTime: "2023-07-14T13:55:00Z",
+      category: "Lektioner",
+      subject: "Databaser",
+      description:
+        "Undervisning i Databaser",
+    },
+    {
+      eventid: 26,
+      title: "UX",
+      allDay: false,
+      startTime: "2023-11-15T09:10:00Z",
+      endTime: "2023-11-15T13:55:00Z",
+      category: "Lektioner",
+      subject: "UX",
+      description:
+        "Undervisning i UX",
+    },
+    {
+      eventid: 27,
+      title: "Frontend/Backend",
+      allDay: false,
+      startTime: "2023-11-17T09:10:00Z",
+      endTime: "2023-11-17T13:55:00Z",
+      category: "Lektioner",
+      subject: "Frontend/Backend",
+      description:
+        "Undervisning i Frontend/Backend",
+    },
   ];
   res.status(200).json({
     message: "Events fetched succesfully",

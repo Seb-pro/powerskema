@@ -31,20 +31,48 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <calendar
-    [calendarMode]="calendar.mode"
-    [formatHourColumn]="calendar.formatHourColumn"
-    [formatWeekTitle]="calendar.formatWeekTitle"
-    [sliderOptions]="options"
-    [currentDate]="calendar.currentDate"
-    [eventSource]="eventSource"
-    (onTimeSelected)="onTimeSelected($event)"
-    (onTitleChanged)="onViewTitleChange($event)"
-    [startingDayWeek]="1"
-    [startingDayMonth]="1"
-    [startHour]="6"
-  >
-  </calendar>
+  <div class="content-background">
+    <ng-template #weekviewHeaderTemplate let-viewDate="viewDate"> 
+      <div class="custom-day-header"> {{ viewDate.dayHeader }} </div> 
+      <div class="week-notifications">
+        <div><ion-badge class="notifications-badge" color="danger">5</ion-badge><ion-icon name="book"></ion-icon></div>
+        <div><ion-badge class="notifications-badge" color="danger">5</ion-badge><ion-icon name="newspaper"></ion-icon></div>
+        <div><ion-badge class="notifications-badge" color="danger">5</ion-badge><ion-icon name="people"></ion-icon></div>
+      </div>
+    </ng-template>
+    <ng-template #dayviewNormalEventTemplate let-displayEvent="displayEvent">
+      <div class="calendar-event-inner">{{displayEvent.event.title}}</div>
+  </ng-template>
+    <calendar
+      [calendarMode]="calendar.mode"
+      [formatHourColumn]="calendar.formatHourColumn"
+      [formatWeekTitle]="calendar.formatWeekTitle"
+      [sliderOptions]="options"
+      [currentDate]="calendar.currentDate"
+      [eventSource]="eventSource"
+      (onTimeSelected)="onTimeSelected($event)"
+      (onTitleChanged)="onViewTitleChange($event)"
+      [startingDayWeek]="1"
+      [startingDayMonth]="1"
+      [timeInterval]="60"
+      [startHour]="8"
+      [endHour]="18"
+      [weekviewHeaderTemplate]="weekviewHeaderTemplate"
+      [dayviewNormalEventTemplate]="dayviewNormalEventTemplate"  
+      >
+    </calendar>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button id="indPutModal">

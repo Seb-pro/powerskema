@@ -30,10 +30,23 @@ ion-content::part(background) {
   }
 }
 
+body > app-root > ion-app > ion-router-outlet > app-home > ion-content > ion-row > ion-col:nth-child(2) {
+  background-color: var(--ion-color-primary);
+  border-radius: 15px;
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+}
+
+.content-background {
+  background-color: var(--ion-color-darkgrey);
+  padding-top: 3rem;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  height: 100%;
+}
+
 // Monthview style
 .monthview-container {
-  .event-detail-container {
-  }
   th {
     background: var(--ion-color-darkgrey);
     color: var(--ion-color-light);
@@ -56,11 +69,85 @@ ion-content::part(background) {
     }
   }
 }
+
 // Weekview Style
 .weekview-container {
+  th.calendar-hour-column {
+    display: none;
+  }
+  td {
+    display: none;
+  }
+  th {
+    display: flex;
+  }
+  tr {
+    border: 0px;
+  }
+  tr > th.weekview-header.text-center {
+    background-color: var(--ion-color-secondary);
+    border: 0px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+    padding: 0;
+    padding-top: 1rem;
+  }
+
+  div.swiper-slide.slide-container.swiper-slide-active > table {
+    border: 0px;
+  }
+  
+  .custom-day-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .week-notifications {
+    margin-right: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 0.3rem;
+  }
+
+  .week-notifications ion-icon {
+    font-size: 25px;
+  }
+
+  .week-notifications div {
+    background-color: var(--ion-color-darkgrey);
+    padding: 0.5rem;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .notifications-badge {
+    background-color: var(--ion-color-danger);
+    position: relative;
+    top: -0.5rem;
+    margin-top: -0.5rem;
+  }
 }
+
 // Dayview Style
 .dayview-container {
+
+  div.calendar-event-inner {
+    background-color: var(--ion-color-secondary);
+    opacity: 0.85;
+    height: 100%;
+    width: 100%;
+    margin-left: 5rem;
+    border-radius: 15px;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+  }
 }
 
 .modal {

@@ -150,6 +150,35 @@ body > app-root > ion-app > ion-router-outlet > app-home > ion-content > ion-row
   }
 }
 
+.daily-tasks {
+  margin-top: -19rem;
+  border-radius: 20px;
+}
+
+.daily-tasks ion-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+  border-bottom: 1px solid #757575;
+  margin-inline: 1rem;
+  padding-inline: 0;
+}
+
+.daily-tasks .icon-container {
+  background-color: var(--ion-color-primary);
+  padding: 0.7rem;
+  border-radius: 10px;
+  ion-icon {
+    font-size: 25px;
+  }
+}
+
+.daily-tasks ion-card-content {
+  margin-top: 1rem;
+}
+
 .modal {
   ion-content::part(background) {
     background: var(--ion-color-dark);

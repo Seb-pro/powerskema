@@ -31,7 +31,6 @@ export class AllePage implements OnInit {
       .UpdateEventListner()
       .subscribe((events: any[]) => {
         this.newEvent = events;
-        // console.log(this.newEvent);
       });
   }
 }

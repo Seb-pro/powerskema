@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EventsPage implements OnInit {
   @Input() item = '';
+  @Input() endTime = new Date ().toDateString();
   constructor() {}
 
   ngOnInit() {}

@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeWorkPage implements OnInit {
   @Input() item = '';
-  @Input() endTime = '';
+  @Input() endTime = new Date ().toDateString();
   constructor() {}
 
   ngOnInit() {}

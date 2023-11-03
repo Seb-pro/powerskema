@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AssignmentPage implements OnInit {
   @Input() item = '';
+  @Input() endTime = new Date ().toDateString();
   constructor() {}
 
   ngOnInit() {}

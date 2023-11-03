@@ -45,11 +45,11 @@
       <div>
         <app-assignment
           *ngIf="selectedButton==='afleveringer' && p.category === 'Aflevering'"
-          [item]="p.title"
+          [item]="p.title " [endTime]="p.endTime"
         />
       </div>
       <div *ngIf="selectedButton==='events' && p.category === 'Events'">
-        <app-events [item]="p.title" />
+        <app-events [item]="p.title" [endTime]="p.endTime" />
       </div>
     </ng-container>
   </ion-card>

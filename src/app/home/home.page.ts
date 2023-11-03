@@ -42,6 +42,7 @@ export class HomePage implements OnInit {
   eventSubsription!: Subscription;
   viewTitle: string = '';
   presentingElemement: any;
+  isDayView: boolean = false;
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
   @ViewChild('modal') modal!: IonModal;
@@ -73,6 +74,7 @@ export class HomePage implements OnInit {
   }
   onViewTitleChange(title: string) {
     this.viewTitle = title;
+    this.checkIsDayView();
   }
 
   onTimeSelected = (ev: { selectedTime: Date; events: any[] }) => {
@@ -122,5 +124,9 @@ export class HomePage implements OnInit {
 
   onEventSelected(event: any) {
     console.log('Event: selected:', event);
+  }
+  
+  checkIsDayView() {
+    this.isDayView = this.calendar.mode === 'day';
   }
 }

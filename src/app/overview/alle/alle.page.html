@@ -4,7 +4,6 @@
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-title>ZtudiePlan</ion-title>
-    <ion-icon slot="end" name="person"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -45,7 +44,8 @@
       <div>
         <app-assignment
           *ngIf="selectedButton==='afleveringer' && p.category === 'Aflevering'"
-          [item]="p.title " [endTime]="p.endTime"
+          [item]="p.title "
+          [endTime]="p.endTime"
         />
       </div>
       <div *ngIf="selectedButton==='events' && p.category === 'Events'">

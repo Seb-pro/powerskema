@@ -36,6 +36,9 @@ calendar {
   height: 5px;
   border-radius: 50%;
 }
+.monthview-selected .event-indicator {
+  background: var(--ion-color-primary);
+}
 
 /*App Global CSS*/
 @import "swiper/css";

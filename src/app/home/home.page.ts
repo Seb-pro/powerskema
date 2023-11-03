@@ -27,8 +27,8 @@ export class HomePage implements OnInit {
   newEvent: any = {
     title: '',
     allDay: false,
-    startTime: null,
-    endTime: null,
+    startTime: '',
+    endTime: '',
     category: '',
     subject: '',
     description: '',
@@ -83,10 +83,7 @@ export class HomePage implements OnInit {
     this.formattedend = format(later, 'HH:mm MMM d, yyyy');
     this.newEvent.endTime = format(later, "yyyy-MM-dd'T'HH:mm:ss");
 
-    // if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
-    //   this.modal.present();
-    // }
-    if (this.calendar.mode === 'day') {
+    if (this.calendar.mode === 'day' || this.calendar.mode === 'week') {
       this.modal.present();
     }
   };
@@ -101,6 +98,29 @@ export class HomePage implements OnInit {
     this.formattedend = format(parseISO(value), 'HH:mm, MMM d, yyyy');
   }
   addNewEvent() {
-    //const addEvent: Event
+    const addEvent: Event = {
+      title: this.newEvent.title,
+      allDay: this.newEvent.allDay,
+      startTime: new Date(this.newEvent.startTime),
+      endTime: new Date(this.newEvent.endTime),
+      subject: this.newEvent.subject,
+      description: this.newEvent.description,
+    };
+    this.eventSource.push(addEvent);
+    this.myCalendar.loadEvents();
+    this.newEvent = {
+      title: '',
+      allDay: false,
+      startTime: new Date(),
+      endTime: new Date(),
+      category: '',
+      subject: '',
+      description: '',
+    };
+    this.modal.dismiss();
+  }
+
+  onEventSelected(event: any) {
+    console.log('Event: selected:', event);
   }
 }

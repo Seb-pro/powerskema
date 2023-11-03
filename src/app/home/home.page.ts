@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class HomePage implements OnInit {
   calendar = {
-    mode: 'day' as CalendarMode,
+    mode: 'month' as CalendarMode,
     currentDate: new Date(),
     formatHourColumn: 'H:mm',
     formatWeekTitle: `MMM 'uge' w`,

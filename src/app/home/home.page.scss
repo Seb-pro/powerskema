@@ -47,8 +47,6 @@ body > app-root > ion-app > ion-router-outlet > app-home > ion-content > ion-row
 
 // Monthview style
 .monthview-container {
-  .event-detail-container {
-  }
   th {
     background: var(--ion-color-darkgrey);
     color: var(--ion-color-light);
@@ -139,7 +137,6 @@ body > app-root > ion-app > ion-router-outlet > app-home > ion-content > ion-row
 
 // Dayview Style
 .dayview-container {
-  // Hides all time intervals
 
   div.calendar-event-inner {
     background-color: var(--ion-color-secondary);

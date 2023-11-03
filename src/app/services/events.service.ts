@@ -46,12 +46,12 @@ export class EventsService {
 }
 
 export interface Event {
-  eventid: number;
+  eventid?: number;
   title: string;
-  allDay: boolean;
+  allDay?: boolean;
   startTime: Date;
   endTime: Date;
-  category: string;
-  subject: string;
-  description: string;
+  category?: string;
+  subject?: string;
+  description?: string;
 }

@@ -143,52 +143,13 @@ body > app-root > ion-app > ion-router-outlet > app-home > ion-content > ion-row
 
   div.calendar-event-inner {
     background-color: var(--ion-color-secondary);
-   
+    opacity: 0.85;
+    height: 100%;
     width: 100%;
     margin-left: 5rem;
     border-radius: 15px;
-   
-  }
-
-  td {
-    display: none;
-  }
-
-  // Returns 8.15
-  table > tbody > tr:nth-child(4), tr:nth-child(4) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 9.10
-  table > tbody > tr:nth-child(15), tr:nth-child(15) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 10.05
-  table > tbody > tr:nth-child(26), tr:nth-child(26) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 11.00
-  table > tbody > tr:nth-child(37), tr:nth-child(37) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 12.15
-  table > tbody > tr:nth-child(52), tr:nth-child(52) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 13.10
-  table > tbody > tr:nth-child(63), tr:nth-child(63) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 14.05
-  table > tbody > tr:nth-child(74), tr:nth-child(74) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 15.00
-  table > tbody > tr:nth-child(85), tr:nth-child(85) > td.calendar-hour-column.text-center {
-    display: block;
-  }
-  // Returns 15.55
-  table > tbody > tr:nth-child(96), tr:nth-child(96) > td.calendar-hour-column.text-center {
-    display: block;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
   }
 }
 

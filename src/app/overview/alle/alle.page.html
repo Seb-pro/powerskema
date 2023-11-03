@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar class="header" color="darkgrey">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ZtudiePlan</ion-title>
+    <ion-icon slot="end" name="person"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="indholdCard">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-segment class="segKnap" value="book">
+          <ion-segment-button
+            value="book"
+            value="default"
+            (click)="onButtonSelected('lektier')"
+          >
+            <ion-icon name="book" class="book-bg"></ion-icon>
+          </ion-segment-button>
+
+          <ion-segment-button
+            value="newspaper"
+            (click)="onButtonSelected('afleveringer')"
+          >
+            <ion-icon name="newspaper" class="ass-bg"></ion-icon>
+          </ion-segment-button>
+
+          <ion-segment-button
+            value="people"
+            (click)="onButtonSelected('events')"
+          >
+            <ion-icon name="people" class="event-bg"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ng-container *ngFor="let p of newEvent">
+      <div *ngIf="selectedButton==='lektier' && p.category === 'Lektier'">
+        <app-home-work [item]="p.title" [endTime]="p.endTime" />
+      </div>
+      <div>
+        <app-assignment
+          *ngIf="selectedButton==='afleveringer' && p.category === 'Aflevering'"
+          [item]="p.title " [endTime]="p.endTime"
+        />
+      </div>
+      <div *ngIf="selectedButton==='events' && p.category === 'Events'">
+        <app-events [item]="p.title" [endTime]="p.endTime" />
+      </div>
+    </ng-container>
+  </ion-card>
+</ion-content>

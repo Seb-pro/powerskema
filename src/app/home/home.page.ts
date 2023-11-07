@@ -6,7 +6,7 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular/common';
 import { Event, EventsService } from '../services/events.service';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -66,9 +66,8 @@ export class HomePage implements OnInit {
     this.eventSubsription = this.eventService
       .UpdateEventListner()
       .subscribe((events: Event[]) => {
-        this.eventList = events;
-        this.eventSource.push(...this.eventList);
-        this.myCalendar.loadEvents();
+        this.eventSource = events;
+        // console.log(this.eventSource);
       });
   }
 
@@ -115,8 +114,6 @@ export class HomePage implements OnInit {
       subject: this.newEvent.subject,
       description: this.newEvent.description,
     };
-    this.eventSource.push(addEvent);
-    this.myCalendar.loadEvents();
     this.eventService.addEvent(addEvent);
 
     this.newEvent = {

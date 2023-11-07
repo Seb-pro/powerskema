@@ -27,7 +27,6 @@ export class EventsService {
             title: event.title,
             allDay: event.allDay,
             startTime: event.startTime.toDate(),
-
             endTime: event.endTime.toDate(),
             subject: event.subject,
             description: event.description,
@@ -69,15 +68,6 @@ export class EventsService {
   }
   addEvent(event: Event) {
     return addDoc(colRef, event);
-  }
-  convertTimestamp(timestamp) {
-    let date = timestamp.toDate();
-    let mm = date.getMonth();
-    let dd = date.getDate();
-    let yyyy = date.getFullYear();
-
-    date = mm + '/' + dd + '/' + yyyy;
-    return date;
   }
 }
 

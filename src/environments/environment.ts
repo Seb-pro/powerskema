@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyAVVgsznm0sRy6L2aZc82MpUZ3MzPJahLA',
+    databaseURL:
+      'https://lets-drive-18aff-default-rtdb.europe-west1.firebasedatabase.app',
+    authDomain: 'powerskema.firebaseapp.com',
+    projectId: 'powerskema',
+    storageBucket: 'powerskema.appspot.com',
+    messagingSenderId: '192500335594',
+    appId: '1:192500335594:web:48f68ee3bbb2c65e776893',
+  },
 };
 
 /*

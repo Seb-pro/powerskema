@@ -26,7 +26,7 @@ export class AllePage implements OnInit {
     this.route.params.subscribe((params) => {
       this.selectedButton = params['selectedButton'];
     });
-    this.eventService.getEvents();
+    this.eventService.getApiEvents();
     this.eventSubsription = this.eventService
       .UpdateEventListner()
       .subscribe((events: any[]) => {

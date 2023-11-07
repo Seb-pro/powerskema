@@ -33,16 +33,18 @@ export class HomePage implements OnInit {
     subject: '',
     description: '',
   };
+  eventList: Event[] = [];
   showStart = false;
   showEnd = false;
-  formattedSart = '';
-  formattedend = '';
+  formattedSart: string;
+  formattedend: string;
 
   eventSource: any[] = [];
   eventSubsription!: Subscription;
   viewTitle: string = '';
   presentingElemement: any;
   isDayView: boolean = false;
+  eventMode: string = 'create';
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
   @ViewChild('modal') modal!: IonModal;
@@ -55,12 +57,17 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.eventService.getEvents();
+    this.eventService.getDateBaseEvents().subscribe((res: Event[]) => {
+      this.eventList = res;
+      this.eventSource.push(...this.eventList);
+      this.myCalendar.loadEvents();
+    });
+    this.eventService.getApiEvents();
     this.eventSubsription = this.eventService
       .UpdateEventListner()
       .subscribe((events: Event[]) => {
-        this.newEvent = events;
-        this.eventSource.push(...this.newEvent);
+        this.eventList = events;
+        this.eventSource.push(...this.eventList);
         this.myCalendar.loadEvents();
       });
   }
@@ -110,6 +117,8 @@ export class HomePage implements OnInit {
     };
     this.eventSource.push(addEvent);
     this.myCalendar.loadEvents();
+    this.eventService.addEvent(addEvent);
+
     this.newEvent = {
       title: '',
       allDay: false,
@@ -123,9 +132,11 @@ export class HomePage implements OnInit {
   }
 
   onEventSelected(event: any) {
-    console.log('Event: selected:', event);
+    console.log('Event: selected:', event.subject);
+
+    this.modal.present();
   }
-  
+
   checkIsDayView() {
     this.isDayView = this.calendar.mode === 'day';
   }

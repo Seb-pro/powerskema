@@ -6,7 +6,7 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular/common';
 import { Event, EventsService } from '../services/events.service';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -33,16 +33,18 @@ export class HomePage implements OnInit {
     subject: '',
     description: '',
   };
+  eventList: Event[] = [];
   showStart = false;
   showEnd = false;
-  formattedSart = '';
-  formattedend = '';
+  formattedSart: string;
+  formattedend: string;
 
   eventSource: any[] = [];
   eventSubsription!: Subscription;
   viewTitle: string = '';
   presentingElemement: any;
   isDayView: boolean = false;
+  eventMode: string = 'create';
 
   @ViewChild(CalendarComponent) myCalendar!: CalendarComponent;
   @ViewChild('modal') modal!: IonModal;
@@ -55,13 +57,17 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.eventService.getEvents();
+    this.eventService.getDateBaseEvents().subscribe((res: Event[]) => {
+      this.eventList = res;
+      this.eventSource.push(...this.eventList);
+      this.myCalendar.loadEvents();
+    });
+    this.eventService.getApiEvents();
     this.eventSubsription = this.eventService
       .UpdateEventListner()
       .subscribe((events: Event[]) => {
-        this.newEvent = events;
-        this.eventSource.push(...this.newEvent);
-        this.myCalendar.loadEvents();
+        this.eventSource = events;
+        // console.log(this.eventSource);
       });
   }
 
@@ -108,8 +114,8 @@ export class HomePage implements OnInit {
       subject: this.newEvent.subject,
       description: this.newEvent.description,
     };
-    this.eventSource.push(addEvent);
-    this.myCalendar.loadEvents();
+    this.eventService.addEvent(addEvent);
+
     this.newEvent = {
       title: '',
       allDay: false,
@@ -123,9 +129,11 @@ export class HomePage implements OnInit {
   }
 
   onEventSelected(event: any) {
-    console.log('Event: selected:', event);
+    console.log('Event: selected:', event.subject);
+
+    this.modal.present();
   }
-  
+
   checkIsDayView() {
     this.isDayView = this.calendar.mode === 'day';
   }

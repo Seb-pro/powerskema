@@ -11,7 +11,7 @@ import { EventsService } from 'src/app/services/events.service';
 export class AllePage implements OnInit {
   selectedButton: string = 'afleveringer';
   eventSubsription!: Subscription;
-  newEvent: any;
+  eventList: any;
 
   onButtonSelected(site: string) {
     this.selectedButton = site;
@@ -26,11 +26,11 @@ export class AllePage implements OnInit {
     this.route.params.subscribe((params) => {
       this.selectedButton = params['selectedButton'];
     });
-    this.eventService.getEvents();
+    this.eventService.getApiEvents();
     this.eventSubsription = this.eventService
       .UpdateEventListner()
       .subscribe((events: any[]) => {
-        this.newEvent = events;
+        this.eventList = events;
       });
   }
 }

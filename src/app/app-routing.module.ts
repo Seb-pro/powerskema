@@ -14,27 +14,29 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'modal',
-    loadChildren: () =>
-      import('./modal/modal.module').then((m) => m.ModalPageModule),
-  },
-  {
     path: 'home-work',
-    loadChildren: () => import('./overview/home-work/home-work.module').then( m => m.HomeWorkPageModule)
+    loadChildren: () =>
+      import('./overview/home-work/home-work.module').then(
+        (m) => m.HomeWorkPageModule
+      ),
   },
   {
     path: 'assignment',
-    loadChildren: () => import('./overview/assignment/assignment.module').then( m => m.AssignmentPageModule)
+    loadChildren: () =>
+      import('./overview/assignment/assignment.module').then(
+        (m) => m.AssignmentPageModule
+      ),
   },
   {
     path: 'events',
-    loadChildren: () => import('./overview/events/events.module').then( m => m.EventsPageModule)
+    loadChildren: () =>
+      import('./overview/events/events.module').then((m) => m.EventsPageModule),
   },
   {
     path: 'alle/:selectedButton',
-    loadChildren: () => import('./overview/alle/alle.module').then( m => m.AllePageModule)
+    loadChildren: () =>
+      import('./overview/alle/alle.module').then((m) => m.AllePageModule),
   },
-
 ];
 
 @NgModule({

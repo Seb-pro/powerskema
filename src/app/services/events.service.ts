@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, map } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
+import { collection, addDoc, getFirestore } from '@firebase/firestore';
+import { Firestore, collectionData } from '@angular/fire/firestore';
+
+const db = getFirestore();
+
+const colRef = collection(db, 'event');
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +15,28 @@ export class EventsService {
   private events: Event[] = [];
   private eventUpdate = new Subject<Event[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private firestore: Firestore) {}
 
-  async init() {}
+  getDateBaseEvents(): Observable<Event[]> {
+    const eventRef = collection(this.firestore, 'event');
+    return collectionData(eventRef, { idField: 'eventid' }).pipe(
+      map((data: Event[]) => {
+        return data.map((event) => {
+          return {
+            eventid: event.eventid,
+            title: event.title,
+            allDay: event.allDay,
+            startTime: event.startTime.toDate(),
+            endTime: event.endTime.toDate(),
+            subject: event.subject,
+            description: event.description,
+          };
+        });
+      })
+    ) as Observable<any>;
+  }
 
-  getEvents() {
+  getApiEvents() {
     this.http
       .get<{ message: string; events: Event[] }>(
         'http://localhost:3000/api/events'
@@ -43,14 +66,17 @@ export class EventsService {
   UpdateEventListner() {
     return this.eventUpdate.asObservable();
   }
+  addEvent(event: Event) {
+    return addDoc(colRef, event);
+  }
 }
 
 export interface Event {
-  eventid?: number;
+  eventid?: string;
   title: string;
   allDay?: boolean;
-  startTime: Date;
-  endTime: Date;
+  startTime: any;
+  endTime: any;
   category?: string;
   subject?: string;
   description?: string;
